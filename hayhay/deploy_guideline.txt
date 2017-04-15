@@ -1,0 +1,21 @@
+Guideline to deploy hayhay
+1. Copy all src file and lib to server /kientv/hayhay
+2. cd to /kientv/hayhay
+3. ant clean
+4. ant jar
+5. jps and kill -9 jetty server process
+5. nohup sh runservice start  >> logfile.log & -------> to start server
+
+Add crontab in /var/spool/cron/crontabs/root file
+
+------- if need to run sql file ------------
+mysql -u root -p
+enter pass: Welcome1VND
+mysql> use hayhay
+mysql> ./ /kientv/hayhay/db/example.sql
+
+start mysql 
+service mysql start
+
+DUMP DB
+d:\Working\Softwares\mysql-5.6.11-winx64\bin>mysqldump.exe -u root -proot familybookz > d:\Working\projects\familybookz\db\dump_oct_31.sql

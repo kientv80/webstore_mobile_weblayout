@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Jan 31 20:31:17 ICT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.3.0 - (1405108): instance a816c00e-014b-4030-39ad-000006041ee8 
+on database directory D:\Working\projects\hayhay\sharestressDB  with class loader sun.misc.Launcher$AppClassLoader@631d75b9 
+Loaded from file:/D:/Working/projects/hayhay/webapps/WEB-INF/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_45-b18
+user.dir=D:\Working\projects\hayhay
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
