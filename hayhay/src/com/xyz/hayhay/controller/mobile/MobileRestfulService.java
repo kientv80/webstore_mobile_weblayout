@@ -1,10 +1,6 @@
 package com.xyz.hayhay.controller.mobile;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,22 +14,39 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xyz.hayhay.controller.BaseController;
 import com.xyz.hayhay.db.dummydata.MappingHelper;
-import com.xyz.hayhay.entirty.News;
-import com.xyz.hayhay.entirty.NewsTypes;
 import com.xyz.hayhay.entirty.WebsiteInfo;
-import com.xyz.hayhay.service.article.NewsService;
 import com.xyz.hayhay.util.JSONHelper;
-import com.xyz.hayhay.util.MyUtil;
+import com.xyz.hayhay.website.collector.TranslateService;
 import com.xyz.webstore.mobile.config.Category;
 import com.xyz.webstore.mobile.config.WebstoreMobileAppConfig;
 
 @Controller
 public class MobileRestfulService extends BaseController {
+	
+	@ResponseBody
+	@RequestMapping(value = "/mobile/translate", method = RequestMethod.GET)
+	public void translate(String word,HttpServletResponse resp) {
+		String result;
+		JSONObject meaning = new JSONObject();
+		try {
+			result = TranslateService.getInstance().getTranslatedWord(word);
+			meaning.put("meaning", result);
+			writeJSONResponsed(resp, meaning);
+		} catch (Exception e) {
+			e.printStackTrace();
+			meaning.put("meaning", "Not Found!");
+			writeJSONResponsed(resp, meaning);
+		}
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/mobile/category", method = RequestMethod.GET)
-	public void getMobileConfig(String version, HttpServletResponse resp) {
+	public void getMobileConfig(String version,String type, HttpServletResponse resp) {
 		try {
-			List<Category> categories = WebstoreMobileAppConfig.getCaterofies(version);
+			List<Category> categories = WebstoreMobileAppConfig.getCategories(version);
+			if(type != null && "worldnews".equals(type)){
+				categories = WebstoreMobileAppConfig.getWorldNewsCategories(version);
+			}
 			JSONObject conf = new JSONObject();
 			// if (version != null && !version.isEmpty() &&
 			// WebstoreMobileAppConfig.CURRENT_VERSION.equals(version)) {

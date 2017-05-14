@@ -101,7 +101,7 @@ public class NewsService {
 
 	public List<News> getLatestNews(int limit, long fromTime) throws SQLException {
 		List<News> newsList = new ArrayList<>();
-		String sql = "select * from news where fromwebsite <> 'muabannhadat.vn' and (UNIX_TIMESTAMP(collectedtime)*1000) > "
+		String sql = "select * from news where fromwebsite <> 'muabannhadat.vn' and type not like 'WN_%' and (UNIX_TIMESTAMP(collectedtime)*1000) > "
 				+ fromTime + " order by id desc limit " + limit;
 		if (fromTime == -1)
 			sql = "select * from news where fromwebsite <> 'muabannhadat.vn' order by id desc limit " + limit;

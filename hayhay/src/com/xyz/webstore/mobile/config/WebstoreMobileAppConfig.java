@@ -89,7 +89,7 @@ public class WebstoreMobileAppConfig {
 		
 		return conf;
 	}
-	public static List<Category> getCaterofies(String version) throws JSONException{
+	public static List<Category> getCategories(String version) throws JSONException{
 		List<Category> categories = new ArrayList<>();
 		Category tintuc = new Category(MappingHelper.TINTUC,"Tin Tức","http://360hay.com/mobile/article/"+MappingHelper.TINTUC,"http://360hay.com/images/icons/category/ic_news.png");
 		Category kinhte = new Category(MappingHelper.KINHTE,"Kinh Tế","http://360hay.com/mobile/article/"+MappingHelper.KINHTE,"http://360hay.com/images/icons/category/ic_economy.png");
@@ -104,12 +104,10 @@ public class WebstoreMobileAppConfig {
 		Category tinhyeugiadinh = new Category(MappingHelper.TINHYEU,"Tinh Yêu-Gia Đình","http://360hay.com/mobile/article/" + MappingHelper.TINHYEU,"http://360hay.com/images/icons/category/ic_love.png");
 		Category nauan = new Category(NewsTypes.NAUAN,"Nấu Ăn","http://360hay.com/mobile/article/"+NewsTypes.NAUAN,"http://360hay.com/images/icons/category/cooking.png");
 		Category nhac = new Category(MappingHelper.NHAC,"Nghe Nhạc","http://360hay.com/mobile/article/"+MappingHelper.NHAC,"http://360hay.com/images/icons/category/ic_music.png");
-		
 		Category soxo = new Category(MappingHelper.NHAC,"Kết Qủa Sổ Xố","http://360hay.com/webstore/lottery","http://360hay.com/images/icons/category/ic_lottery.png");
 		soxo.setOpenLink(true);
 		Category tv = new Category(MappingHelper.NHAC,"Lịch Phát Sóng TV","http://360hay.com/entertainment/tvprogram","http://360hay.com/images/icons/category/ic_tv.png");
 		tv.setOpenLink(true);
-		
 		categories.add(tintuc);
 		categories.add(kinhte);
 		categories.add(kinhdoanh);
@@ -123,6 +121,19 @@ public class WebstoreMobileAppConfig {
 		categories.add(tinhyeugiadinh);
 		categories.add(nauan);
 		categories.add(nhac);
+		return categories;
+	}
+	public static List<Category> getWorldNewsCategories(String version) throws JSONException{
+		List<Category> categories = new ArrayList<>();
+		Category news = new Category(MappingHelper.WN_HOME,"Hot News","http://360hay.com/mobile/article/"+MappingHelper.WN_HOME,"http://360hay.com/images/icons/category/ic_news.png");
+		Category economy = new Category(MappingHelper.WN_BIZ,"Economic","http://360hay.com/mobile/article/"+MappingHelper.WN_BIZ,"http://360hay.com/images/icons/category/ic_economy.png");
+		Category sience = new Category(NewsTypes.WN_SIENCE,"Sience","http://360hay.com/mobile/article/"+NewsTypes.WN_SIENCE,"http://360hay.com/images/icons/category/ic_kinhdoanh.png");
+		Category tech = new Category(NewsTypes.WN_TECH,"Tech","http://360hay.com/mobile/article/"+NewsTypes.WN_TECH,"http://360hay.com/images/icons/category/ic_tech.png");
+		
+		categories.add(news);
+		categories.add(economy);
+		categories.add(sience);
+		categories.add(tech);
 		return categories;
 	}
 	public static List<WebsiteInfo> getWebsiteInfo(String version) throws JSONException{
