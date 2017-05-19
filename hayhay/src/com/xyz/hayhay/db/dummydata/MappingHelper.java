@@ -277,12 +277,13 @@ public class MappingHelper {
 		cateGroup.put(NewsTypes.KINH_DOANH,   Arrays.asList(new String[] {NewsTypes.QUAN_TRI, NewsTypes.NGHE_NGHIEP, NewsTypes.THUONG_HIEU, NewsTypes.KINH_NHIEM_KINH_DOANH, NewsTypes.NHAN_VAT}));
 		cateGroup.put(NewsTypes.ENTERTAINMENT,   Arrays.asList(new String[] {NewsTypes.NGOISAO,NewsTypes.TINHYEU, NewsTypes.FUNYSTORY}));
 		cateGroup.put(NewsTypes.NHAC_FILMS,   Arrays.asList(new String[] {NewsTypes.TYPE_MUSIC, NewsTypes.TYPE_FILM, NewsTypes.MOVIE_NEWS}));
-		cateGroup.put(MappingHelper.WORLDNEWS,  Arrays.asList(new String[] { NewsTypes.WN_HOME, NewsTypes.WN_BIZ, NewsTypes.WN_TECH, NewsTypes.WN_SIENCE}));
+		
+		cateGroup.put(MappingHelper.WN_HOME,  Arrays.asList(new String[] { NewsTypes.WN_HOME, NewsTypes.WN_BIZ, NewsTypes.WN_POLITICS,NewsTypes.WN_TECH, NewsTypes.WN_SIENCE, NewsTypes.WN_HEALTH}));
 		cateGroup.put(MappingHelper.WN_BIZ,  Arrays.asList(new String[] { NewsTypes.WN_BIZ}));
 		cateGroup.put(MappingHelper.WN_TECH,  Arrays.asList(new String[] { NewsTypes.WN_TECH}));
 		cateGroup.put(MappingHelper.WN_SIENCE,  Arrays.asList(new String[] { NewsTypes.WN_SIENCE}));
-
-		
+		cateGroup.put(NewsTypes.WN_HEALTH,  Arrays.asList(new String[] { NewsTypes.WN_HEALTH}));
+		cateGroup.put(NewsTypes.WN_POLITICS,  Arrays.asList(new String[] { NewsTypes.WN_POLITICS}));
 		//		NewsTypes.NGOISAO, NewsTypes.TYPE_SUCKHOE,NewsTypes.TINHYEU,
 		
 		List<CategoryInfo> tintrongnuoc = new ArrayList<>();

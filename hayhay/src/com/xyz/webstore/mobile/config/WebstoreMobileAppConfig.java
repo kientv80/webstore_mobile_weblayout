@@ -129,11 +129,15 @@ public class WebstoreMobileAppConfig {
 		Category economy = new Category(MappingHelper.WN_BIZ,"Economic","http://360hay.com/mobile/article/"+MappingHelper.WN_BIZ,"http://360hay.com/images/icons/category/ic_economy.png");
 		Category sience = new Category(NewsTypes.WN_SIENCE,"Sience","http://360hay.com/mobile/article/"+NewsTypes.WN_SIENCE,"http://360hay.com/images/icons/category/ic_kinhdoanh.png");
 		Category tech = new Category(NewsTypes.WN_TECH,"Tech","http://360hay.com/mobile/article/"+NewsTypes.WN_TECH,"http://360hay.com/images/icons/category/ic_tech.png");
+		Category health = new Category(NewsTypes.WN_HEALTH,"Health","http://360hay.com/mobile/article/"+NewsTypes.WN_HEALTH,"http://360hay.com/images/icons/category/ic_suckhoe.png");
+		Category politic = new Category(NewsTypes.WN_POLITICS,"Politics","http://360hay.com/mobile/article/"+NewsTypes.WN_POLITICS,"http://360hay.com/images/icons/category/ic_kinhdoanh.png");
 		
 		categories.add(news);
+		categories.add(politic);
 		categories.add(economy);
 		categories.add(sience);
 		categories.add(tech);
+		categories.add(health);
 		return categories;
 	}
 	public static List<WebsiteInfo> getWebsiteInfo(String version) throws JSONException{
@@ -162,7 +166,10 @@ public class WebstoreMobileAppConfig {
 		webs.add(new WebsiteInfo("pcworld.com.vn", "", "http://360hay.com/images/website_icon/pcworld.png", "cover", "url"));
 		webs.add(new WebsiteInfo("bongda24h.vn", "", "http://360hay.com/images/website_icon/bongda24h.png", "cover", "url"));
 		webs.add(new WebsiteInfo("suckhoegiadinh.com.vn", "", "http://360hay.com/images/website_icon/suckhoegiadinh.jpg", "cover", "url"));
-
+		
+		webs.add(new WebsiteInfo("foxbusiness.com", "", "http://360hay.com/images/website_icon/foxnews.png", "cover", "url"));
+		webs.add(new WebsiteInfo("foxnews.com", "", "http://360hay.com/images/website_icon/foxnews.png", "cover", "url"));
+		webs.add(new WebsiteInfo("nytimes.com", "", "http://360hay.com/images/website_icon/nytimes.png", "cover", "url"));
 		return webs;
 	}
 }
