@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.json.JSONException;
 import org.json.simple.JSONObject;
-
-import com.xyz.hayhay.db.dummydata.MappingHelper;
 import com.xyz.hayhay.entirty.NewsTypes;
 import com.xyz.hayhay.entirty.WebsiteInfo;
 import com.xyz.hayhay.util.JSONHelper;
@@ -91,22 +89,24 @@ public class WebstoreMobileAppConfig {
 	}
 	public static List<Category> getCategories(String version) throws JSONException{
 		List<Category> categories = new ArrayList<>();
-		Category tintuc = new Category(MappingHelper.TINTUC,"Tin Tức","http://360hay.com/mobile/article/"+MappingHelper.TINTUC,"http://360hay.com/images/icons/category/ic_news.png");
-		Category kinhte = new Category(MappingHelper.KINHTE,"Kinh Tế","http://360hay.com/mobile/article/"+MappingHelper.KINHTE,"http://360hay.com/images/icons/category/ic_economy.png");
+		Category tintuc = new Category(NewsTypes.TINTUC,"Tin Tức","http://360hay.com/mobile/article/"+NewsTypes.TINTUC,"http://360hay.com/images/icons/category/ic_news.png");
+		Category kinhte = new Category(NewsTypes.KINHTE,"Kinh Tế","http://360hay.com/mobile/article/"+NewsTypes.KINHTE,"http://360hay.com/images/icons/category/ic_economy.png");
 		Category kinhdoanh = new Category(NewsTypes.KINH_DOANH,"Kinh Doanh","http://360hay.com/mobile/article/"+NewsTypes.KINH_DOANH,"http://360hay.com/images/icons/category/ic_kinhdoanh.png");
-		Category congnghe = new Category(MappingHelper.CONGNGHE,"Công Nghệ","http://360hay.com/mobile/article/"+MappingHelper.CONGNGHE,"http://360hay.com/images/icons/category/ic_tech.png");
-		Category thethao = new Category(MappingHelper.THETHAO,"Thể Thao","http://360hay.com/mobile/article/"+MappingHelper.THETHAO,"http://360hay.com/images/icons/category/ic_sport.png");
-		Category xe = new Category(MappingHelper.XE,"Ô Tô-Xe Máy","http://360hay.com/mobile/article/"+MappingHelper.XE,"http://360hay.com/images/icons/category/ic_xe.png");
-		Category nhadat = new Category(MappingHelper.BATDONGSAN,"Nhà Đất","http://360hay.com/mobile/article/"+MappingHelper.BATDONGSAN,"http://360hay.com/images/icons/category/ic_building.png");
+		Category congnghe = new Category(NewsTypes.CONGNGHE,"Công Nghệ","http://360hay.com/mobile/article/"+NewsTypes.CONGNGHE,"http://360hay.com/images/icons/category/ic_tech.png");
+		Category thethao = new Category(NewsTypes.THETHAO,"Thể Thao","http://360hay.com/mobile/article/"+NewsTypes.THETHAO,"http://360hay.com/images/icons/category/ic_sport.png");
+		Category xe = new Category(NewsTypes.XE,"Ô Tô-Xe Máy","http://360hay.com/mobile/article/"+NewsTypes.XE,"http://360hay.com/images/icons/category/ic_xe.png");
+		Category nhadat = new Category(NewsTypes.BATDONGSAN,"Nhà Đất","http://360hay.com/mobile/article/"+NewsTypes.BATDONGSAN,"http://360hay.com/images/icons/category/ic_building.png");
 		Category khoinghiep = new Category(NewsTypes.KHOINGHIEP,"Khởi Nghiệp","http://360hay.com/mobile/article/" +NewsTypes.KHOINGHIEP,"http://360hay.com/images/icons/category/ic_ngoisao.png");
-		Category ngoisao = new Category(MappingHelper.NGOISAO,"Ngôi Sao","http://360hay.com/mobile/article/"+MappingHelper.NGOISAO,"http://360hay.com/images/icons/category/ngoisao.png");
-		Category suckhoe = new Category(MappingHelper.SUCKHOE,"Sức Khỏe","http://360hay.com/mobile/article/"+MappingHelper.SUCKHOE,"http://360hay.com/images/icons/category/ic_suckhoe.png");
-		Category tinhyeugiadinh = new Category(MappingHelper.TINHYEU,"Tinh Yêu-Gia Đình","http://360hay.com/mobile/article/" + MappingHelper.TINHYEU,"http://360hay.com/images/icons/category/ic_love.png");
+		Category ngoisao = new Category(NewsTypes.NGOISAO,"Ngôi Sao","http://360hay.com/mobile/article/"+NewsTypes.NGOISAO,"http://360hay.com/images/icons/category/ngoisao.png");
+		Category suckhoe = new Category(NewsTypes.SUCKHOE,"Sức Khỏe","http://360hay.com/mobile/article/"+NewsTypes.SUCKHOE,"http://360hay.com/images/icons/category/ic_suckhoe.png");
+		Category tinhyeugiadinh = new Category(NewsTypes.TINHYEU,"Tinh Yêu-Gia Đình","http://360hay.com/mobile/article/" + NewsTypes.TINHYEU,"http://360hay.com/images/icons/category/ic_love.png");
 		Category nauan = new Category(NewsTypes.NAUAN,"Nấu Ăn","http://360hay.com/mobile/article/"+NewsTypes.NAUAN,"http://360hay.com/images/icons/category/cooking.png");
-		Category nhac = new Category(MappingHelper.NHAC,"Nghe Nhạc","http://360hay.com/mobile/article/"+MappingHelper.NHAC,"http://360hay.com/images/icons/category/ic_music.png");
-		Category soxo = new Category(MappingHelper.NHAC,"Kết Qủa Sổ Xố","http://360hay.com/webstore/lottery","http://360hay.com/images/icons/category/ic_lottery.png");
+		Category nhac = new Category(NewsTypes.NHAC,"Nghe Nhạc","http://360hay.com/mobile/article/"+NewsTypes.NHAC,"http://360hay.com/images/icons/category/ic_music.png");
+		Category funy = new Category(NewsTypes.FUNYSTORY,"Cười","http://360hay.com/mobile/article/"+NewsTypes.FUNYSTORY,"http://360hay.com/images/icons/category/ic_smile.png");
+		
+		Category soxo = new Category(NewsTypes.NHAC,"Kết Qủa Sổ Xố","http://360hay.com/webstore/lottery","http://360hay.com/images/icons/category/ic_lottery.png");
 		soxo.setOpenLink(true);
-		Category tv = new Category(MappingHelper.NHAC,"Lịch Phát Sóng TV","http://360hay.com/entertainment/tvprogram","http://360hay.com/images/icons/category/ic_tv.png");
+		Category tv = new Category(NewsTypes.NHAC,"Lịch Phát Sóng TV","http://360hay.com/entertainment/tvprogram","http://360hay.com/images/icons/category/ic_tv.png");
 		tv.setOpenLink(true);
 		categories.add(tintuc);
 		categories.add(kinhte);
@@ -121,12 +121,14 @@ public class WebstoreMobileAppConfig {
 		categories.add(tinhyeugiadinh);
 		categories.add(nauan);
 		categories.add(nhac);
+		categories.add(funy);
+		categories.add(soxo);
 		return categories;
 	}
 	public static List<Category> getWorldNewsCategories(String version) throws JSONException{
 		List<Category> categories = new ArrayList<>();
-		Category news = new Category(MappingHelper.WN_HOME,"Hot News","http://360hay.com/mobile/article/"+MappingHelper.WN_HOME,"http://360hay.com/images/icons/category/ic_news.png");
-		Category economy = new Category(MappingHelper.WN_BIZ,"Economic","http://360hay.com/mobile/article/"+MappingHelper.WN_BIZ,"http://360hay.com/images/icons/category/ic_economy.png");
+		Category news = new Category(NewsTypes.WN_HOME,"Hot News","http://360hay.com/mobile/article/"+NewsTypes.WN_HOME,"http://360hay.com/images/icons/category/ic_news.png");
+		Category economy = new Category(NewsTypes.WN_BIZ,"Economic","http://360hay.com/mobile/article/"+NewsTypes.WN_BIZ,"http://360hay.com/images/icons/category/ic_economy.png");
 		Category sience = new Category(NewsTypes.WN_SIENCE,"Sience","http://360hay.com/mobile/article/"+NewsTypes.WN_SIENCE,"http://360hay.com/images/icons/category/ic_kinhdoanh.png");
 		Category tech = new Category(NewsTypes.WN_TECH,"Tech","http://360hay.com/mobile/article/"+NewsTypes.WN_TECH,"http://360hay.com/images/icons/category/ic_tech.png");
 		Category health = new Category(NewsTypes.WN_HEALTH,"Health","http://360hay.com/mobile/article/"+NewsTypes.WN_HEALTH,"http://360hay.com/images/icons/category/ic_suckhoe.png");
@@ -142,34 +144,35 @@ public class WebstoreMobileAppConfig {
 	}
 	public static List<WebsiteInfo> getWebsiteInfo(String version) throws JSONException{
 		List<WebsiteInfo> webs = new ArrayList<>();
-		webs.add(new WebsiteInfo("ngoisao.net", "", "http://360hay.com/images/website_icon/ngoisaonet.jpg", "cover", "url"));
-		webs.add(new WebsiteInfo("muabannhadat.vn", "", "", "cover", "url"));
-		webs.add(new WebsiteInfo("galaxycine.vn", "", "icon", "cover", "url"));
-		webs.add(new WebsiteInfo("ictnews.vn", "", "http://360hay.com/images/website_icon/ictnews.png", "cover", "url"));
-		webs.add(new WebsiteInfo("news.zing.vn", "", "http://360hay.com/images/website_icon/zingnews.jpg", "cover", "url"));
-		webs.add(new WebsiteInfo("tuoitre.vn", "", "http://360hay.com/images/website_icon/tuoitre.jpg", "cover", "url"));
-		webs.add(new WebsiteInfo("dantri.com.vn", "", "http://360hay.com/images/website_icon/dantri.jpg", "cover", "url"));
-		webs.add(new WebsiteInfo("bizlive.vn", "", "http://360hay.com/images/website_icon/bizlive.png", "cover", "url"));
-		webs.add(new WebsiteInfo("vneconomy.vn", "", "http://360hay.com/images/website_icon/vneconomy.png", "cover", "url"));
-		webs.add(new WebsiteInfo("cafebiz.vn", "", "", "cover", "url"));
-		webs.add(new WebsiteInfo("suckhoedoisong.vn", "", "", "cover", "url"));
-		webs.add(new WebsiteInfo("thethao247.vn", "", "http://360hay.com/images/website_icon/thethao247.png", "cover", "url"));
-		webs.add(new WebsiteInfo("24h.com.vn", "", "", "cover", "url"));
-		webs.add(new WebsiteInfo("afamily.vn", "", "http://360hay.com/images/website_icon/afamily.png", "cover", "url"));
-		webs.add(new WebsiteInfo("monngonmoingay.com", "", "", "cover", "url"));
-		webs.add(new WebsiteInfo("nhaccuatui.com", "", "http://360hay.com/images/website_icon/nhaccuatui.jpg", "cover", "url"));
-		webs.add(new WebsiteInfo("nhac.vn", "", "http://360hay.com/images/website_icon/nhac.png", "cover", "url"));
-		webs.add(new WebsiteInfo("kinhdoanh.vnexpress.net", "", "http://360hay.com/images/website_icon/vnexpress.png", "cover", "url"));
-		webs.add(new WebsiteInfo("vnexpress.net", "", "http://360hay.com/images/website_icon/vnexpress.png", "cover", "url"));
-		webs.add(new WebsiteInfo("phimmoi.net", "", "http://360hay.com/images/website_icon/phimmoi.png", "cover", "url"));
-		webs.add(new WebsiteInfo("baoxaydung.com.vn", "", "http://360hay.com/images/website_icon/xaydung.png", "cover", "url"));
-		webs.add(new WebsiteInfo("pcworld.com.vn", "", "http://360hay.com/images/website_icon/pcworld.png", "cover", "url"));
-		webs.add(new WebsiteInfo("bongda24h.vn", "", "http://360hay.com/images/website_icon/bongda24h.png", "cover", "url"));
-		webs.add(new WebsiteInfo("suckhoegiadinh.com.vn", "", "http://360hay.com/images/website_icon/suckhoegiadinh.jpg", "cover", "url"));
+		webs.add(new WebsiteInfo("ngoisao.net", "", "http://360hay.com/images/website_icon/ngoisaonet.jpg", "cover", "url",true));
+		webs.add(new WebsiteInfo("muabannhadat.vn", "", "", "cover", "url",true));
+		webs.add(new WebsiteInfo("galaxycine.vn", "", "icon", "cover", "url",true));
+		webs.add(new WebsiteInfo("ictnews.vn", "", "http://360hay.com/images/website_icon/ictnews.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("news.zing.vn", "", "http://360hay.com/images/website_icon/zingnews.jpg", "cover", "url",true));
+		webs.add(new WebsiteInfo("tuoitre.vn", "", "http://360hay.com/images/website_icon/tuoitre.jpg", "cover", "url",true));
+		webs.add(new WebsiteInfo("dantri.com.vn", "", "http://360hay.com/images/website_icon/dantri.jpg", "cover", "url",false));
+		webs.add(new WebsiteInfo("bizlive.vn", "", "http://360hay.com/images/website_icon/bizlive.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("vneconomy.vn", "", "http://360hay.com/images/website_icon/vneconomy.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("cafebiz.vn", "", "", "cover", "url",true));
+		webs.add(new WebsiteInfo("suckhoedoisong.vn", "", "", "cover", "url",true));
+		webs.add(new WebsiteInfo("thethao247.vn", "", "http://360hay.com/images/website_icon/thethao247.png", "cover", "url",false));
+		webs.add(new WebsiteInfo("24h.com.vn", "", "", "cover", "url",false));
+		webs.add(new WebsiteInfo("afamily.vn", "", "http://360hay.com/images/website_icon/afamily.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("monngonmoingay.com", "", "", "cover", "url",true));
+		webs.add(new WebsiteInfo("nhaccuatui.com", "", "http://360hay.com/images/website_icon/nhaccuatui.jpg", "cover", "url",false));
+		webs.add(new WebsiteInfo("nhac.vn", "", "http://360hay.com/images/website_icon/nhac.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("kinhdoanh.vnexpress.net", "", "http://360hay.com/images/website_icon/vnexpress.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("vnexpress.net", "", "http://360hay.com/images/website_icon/vnexpress.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("phimmoi.net", "", "http://360hay.com/images/website_icon/phimmoi.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("baoxaydung.com.vn", "", "http://360hay.com/images/website_icon/xaydung.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("pcworld.com.vn", "", "http://360hay.com/images/website_icon/pcworld.png", "cover", "url",false));
+		webs.add(new WebsiteInfo("bongda24h.vn", "", "http://360hay.com/images/website_icon/bongda24h.png", "cover", "url",false));
+		webs.add(new WebsiteInfo("suckhoegiadinh.com.vn", "", "http://360hay.com/images/website_icon/suckhoegiadinh.jpg", "cover", "url",true));
 		
-		webs.add(new WebsiteInfo("foxbusiness.com", "", "http://360hay.com/images/website_icon/foxnews.png", "cover", "url"));
-		webs.add(new WebsiteInfo("foxnews.com", "", "http://360hay.com/images/website_icon/foxnews.png", "cover", "url"));
-		webs.add(new WebsiteInfo("nytimes.com", "", "http://360hay.com/images/website_icon/nytimes.png", "cover", "url"));
+		webs.add(new WebsiteInfo("foxbusiness.com", "", "http://360hay.com/images/website_icon/foxnews.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("foxnews.com", "", "http://360hay.com/images/website_icon/foxnews.png", "cover", "url",true));
+		webs.add(new WebsiteInfo("nytimes.com", "", "http://360hay.com/images/website_icon/nytimes.png", "cover", "url",false));
+		
 		return webs;
 	}
 }

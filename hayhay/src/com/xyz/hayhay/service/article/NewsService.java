@@ -27,6 +27,7 @@ import com.xyz.hayhay.db.JDBCConnection;
 import com.xyz.hayhay.db.dummydata.MappingHelper;
 import com.xyz.hayhay.entirty.Category;
 import com.xyz.hayhay.entirty.News;
+import com.xyz.hayhay.entirty.NewsTypes;
 import com.xyz.hayhay.util.JSONHelper;
 
 public class NewsService {
@@ -63,7 +64,7 @@ public class NewsService {
 
 	private void loadLatestArticles() throws SQLException {
 		StringBuilder filterTypes = new StringBuilder();
-		for (String type : MappingHelper.cateGroup.get(MappingHelper.TINTUC)) {
+		for (String type : MappingHelper.cateGroup.get(NewsTypes.TINTUC)) {
 			filterTypes.append("'").append(type).append("'").append(",");
 		}
 		String sql = "SELECT distinct url,id,title, shotdesc,fromwebsite,imageurl,type,collectedtime,title_id,parent_catename FROM news WHERE parent_catename in ("
@@ -508,7 +509,7 @@ public class NewsService {
 
 	private List<String> getUserInterestedCategories(String userId) {
 		// not yet know user interested so return default
-		return MappingHelper.cateGroup.get(MappingHelper.TINTUC);
+		return MappingHelper.cateGroup.get(NewsTypes.TINTUC);
 	}
 
 }

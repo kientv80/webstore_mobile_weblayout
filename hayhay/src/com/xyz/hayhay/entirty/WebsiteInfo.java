@@ -3,6 +3,15 @@ package com.xyz.hayhay.entirty;
 public class WebsiteInfo {
 	
 	
+	public WebsiteInfo(String name, String desc, String icon, String cover, String url, boolean isGoodImage) {
+		super();
+		this.name = name;
+		this.desc = desc;
+		this.icon = icon;
+		this.cover = cover;
+		this.url = url;
+		this.isGoodImage = isGoodImage;
+	}
 	public WebsiteInfo(String name, String desc, String icon, String cover, String url) {
 		super();
 		this.name = name;
@@ -71,9 +80,13 @@ public class WebsiteInfo {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	public boolean getIsGoodImage(){
+		return isGoodImage;
+	}
 	String name;
 	String desc;
 	String icon;
 	String cover;
 	String url;
+	boolean isGoodImage;
 }

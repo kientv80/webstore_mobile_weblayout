@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xyz.hayhay.controller.BaseController;
 import com.xyz.hayhay.db.dummydata.MappingHelper;
+import com.xyz.hayhay.entirty.NewsTypes;
 import com.xyz.hayhay.entirty.WebsiteInfo;
 import com.xyz.hayhay.util.JSONHelper;
 import com.xyz.hayhay.website.collector.TranslateService;
@@ -22,10 +23,10 @@ import com.xyz.webstore.mobile.config.WebstoreMobileAppConfig;
 
 @Controller
 public class MobileRestfulService extends BaseController {
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/mobile/translate", method = RequestMethod.GET)
-	public void translate(String word,HttpServletResponse resp) {
+	public void translate(String word, HttpServletResponse resp) {
 		String result;
 		JSONObject meaning = new JSONObject();
 		try {
@@ -38,13 +39,13 @@ public class MobileRestfulService extends BaseController {
 			writeJSONResponsed(resp, meaning);
 		}
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/mobile/category", method = RequestMethod.GET)
-	public void getMobileConfig(String version,String type, HttpServletResponse resp) {
+	public void getMobileConfig(String version, String type, HttpServletResponse resp) {
 		try {
 			List<Category> categories = WebstoreMobileAppConfig.getCategories(version);
-			if(type != null && "worldnews".equals(type)){
+			if (type != null && "worldnews".equals(type)) {
 				categories = WebstoreMobileAppConfig.getWorldNewsCategories(version);
 			}
 			JSONObject conf = new JSONObject();
@@ -87,11 +88,21 @@ public class MobileRestfulService extends BaseController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "/mobile/appversion", method = RequestMethod.GET)
+	public void getAppVersion(String version, HttpServletResponse resp) {
+		JSONObject appversion = new JSONObject();
+		appversion.put("version", "1.0");
+		appversion.put("desc", "New version has been released, please click here to update.");
+		appversion.put("releasedDate", "04/06/2017");
+		appversion.put("forceUpdate", "false");
+		writeJSONResponsed(resp, appversion);
+	}
+	@ResponseBody
 	@RequestMapping(value = "/mobile/article/{category}", method = RequestMethod.GET)
 	public void getArticles(@PathVariable String category, String userid, String from, HttpServletResponse resp) {
 		try {
 			if (category == null || category.isEmpty())
-				category = MappingHelper.TINTUC;
+				category = NewsTypes.TINTUC;
 			int fromIndex;
 			if (from == null || from.isEmpty())
 				fromIndex = 0;
@@ -103,7 +114,13 @@ public class MobileRestfulService extends BaseController {
 				List<String> categories = MappingHelper.cateGroup.get(category);
 				JSONObject result = null;
 				if (categories != null && categories.size() > 0) {
-					result = newsService.getNews(category + "article" + fromIndex, categories, 10, fromIndex);
+					if (NewsTypes.TINTUC.equals(category)) {
+						System.out.println("==============getHighlightNews=" + category);
+						result = newsService.getHighlightNews(category + "article" + fromIndex, categories, 10, fromIndex);
+					}else{
+						System.out.println("==============getNews=" + category);
+						result = newsService.getNews(category + "article" + fromIndex, categories, 10, fromIndex);
+					}
 				}
 				if (result != null)
 					writeSimpleJSONObjectResponse(resp, result);
@@ -124,10 +141,10 @@ public class MobileRestfulService extends BaseController {
 				filterTime = Long.parseLong(time);
 			}
 			try {
-				List<String> categories = MappingHelper.cateGroup.get(MappingHelper.TINTUC);
+				List<String> categories = MappingHelper.cateGroup.get(NewsTypes.TINTUC);
 				JSONObject result = null;
 				if (categories != null && categories.size() > 0) {
-					result = newsService.getLatestNews(categories,10,filterTime);
+					result = newsService.getLatestNews(categories, 10, filterTime);
 				}
 				if (result != null)
 					writeSimpleJSONObjectResponse(resp, result);
@@ -138,7 +155,8 @@ public class MobileRestfulService extends BaseController {
 			e.printStackTrace();
 		}
 	}
+
 	public static void main(String[] args) {
-		System.out.println((System.currentTimeMillis()-60*60*1000));
+		System.out.println((System.currentTimeMillis() - 60 * 60 * 1000));
 	}
 }

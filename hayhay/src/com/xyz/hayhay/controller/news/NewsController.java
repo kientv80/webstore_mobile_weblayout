@@ -43,7 +43,8 @@ public class NewsController extends BaseController {
 	@Async
 	@ResponseBody
 	@RequestMapping(value = "/news/loadmorenews.html", method = RequestMethod.GET)
-	public void loadMoreNews(String from, String cate, String fromIndex, ModelMap model, HttpServletRequest request, HttpServletResponse resp) {
+	public void loadMoreNews(String from, String cate, String fromIndex, ModelMap model, HttpServletRequest request,
+			HttpServletResponse resp) {
 		int index = Integer.valueOf(fromIndex);
 		try {
 			if (!"dashboard".equals(from)) {
@@ -58,24 +59,27 @@ public class NewsController extends BaseController {
 			e.printStackTrace();
 		}
 	}
+
 	@RequestMapping(value = "/latestnews", method = RequestMethod.GET)
-	public String getUpdate( HttpServletResponse resp, ModelMap model){
+	public String getUpdate(HttpServletResponse resp, ModelMap model) {
 		try {
-			Map<String,Category> categoryList = new LinkedHashMap<>();
-			List<News> news = NewsService.getInstance().getLatestNews(50,-1);
-			for(News n : news) {
+			Map<String, Category> categoryList = new LinkedHashMap<>();
+			List<News> news = NewsService.getInstance().getLatestNews(50, -1);
+			for (News n : news) {
 				Category c = categoryList.get(n.getType());
 				if (c == null) {
 					if (MappingHelper.categoryTypeLabelMapping.get(n.getType()) != null) {
-						c = new Category(new ArrayList<News>(),MappingHelper.categoryTypeLabelMapping.get(n.getType()), n.getType());
+						c = new Category(new ArrayList<News>(), MappingHelper.categoryTypeLabelMapping.get(n.getType()),
+								n.getType());
 					} else {
 						c = new Category(new ArrayList<News>(), "", n.getParentCateName());
 					}
-					categoryList.put(c.getCateId(),c);
-				} 
+					categoryList.put(c.getCateId(), c);
+				}
 				c.addNews(n);
 			}
-			org.json.simple.JSONArray list = (org.json.simple.JSONArray) new JSONParser().parse(JSONHelper.toJSONArray(categoryList.values()).toString());
+			org.json.simple.JSONArray list = (org.json.simple.JSONArray) new JSONParser()
+					.parse(JSONHelper.toJSONArray(categoryList.values()).toString());
 			model.put("from", "dashboard");
 			model.put("fromIndex", 10);
 			model.put("categories", list);
@@ -85,8 +89,10 @@ public class NewsController extends BaseController {
 		}
 		return "dashboard_news";
 	}
+
 	@RequestMapping(value = "/news/opennews.html", method = RequestMethod.GET)
-	public String openNews(String articleId, String targetUrl, String ref, HttpServletRequest req, HttpServletResponse resp, ModelMap model) {
+	public String openNews(String articleId, String targetUrl, String ref, HttpServletRequest req,
+			HttpServletResponse resp, ModelMap model) {
 		News news = null;
 		if (ValidationHelper.isNumber(articleId)) {
 			try {
@@ -110,7 +116,8 @@ public class NewsController extends BaseController {
 	}
 
 	@RequestMapping(value = "/news/open/{target}", method = RequestMethod.GET)
-	public String openTargetUrl(@PathVariable String target, HttpServletRequest req, HttpServletResponse resp, ModelMap model) {
+	public String openTargetUrl(@PathVariable String target, HttpServletRequest req, HttpServletResponse resp,
+			ModelMap model) {
 		if (target != null && !target.isEmpty()) {
 			model.put("target", MyUtil.decodeUrl(target));
 			return "dashboard_news";
@@ -118,7 +125,8 @@ public class NewsController extends BaseController {
 			return "redirect:/";
 		}
 	}
-	@RequestMapping(value = { "/", "/home.html","/news" }, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/", "/home.html", "/news" }, method = RequestMethod.GET)
 	public String home(String target, String cate, HttpServletRequest rq, ModelMap model) {
 		if (target != null && !target.isEmpty()) {
 			model.put("target", target);
@@ -127,16 +135,22 @@ public class NewsController extends BaseController {
 			return homeOfNews(cate, target, model);
 		}
 	}
+
 	@RequestMapping(value = "/news/{cate}", method = RequestMethod.GET)
-	public String newsCategory(@PathVariable String cate, String target, HttpServletRequest req, HttpServletResponse resp, ModelMap model) {
+	public String newsCategory(@PathVariable String cate, String target, HttpServletRequest req,
+			HttpServletResponse resp, ModelMap model) {
 		return homeOfNews(cate, target, model);
 	}
+
 	@RequestMapping(value = "/cate/{cate}", method = RequestMethod.GET)
-	public String category(@PathVariable String cate, String target, HttpServletRequest req, HttpServletResponse resp, ModelMap model) {
+	public String category(@PathVariable String cate, String target, HttpServletRequest req, HttpServletResponse resp,
+			ModelMap model) {
 		return homeOfNews(cate, target, model);
 	}
+
 	@RequestMapping(value = "/news/type/{cate}", method = RequestMethod.GET)
-	public String newsInOneCategory(@PathVariable String cate, HttpServletRequest req, HttpServletResponse resp, ModelMap model) {
+	public String newsInOneCategory(@PathVariable String cate, HttpServletRequest req, HttpServletResponse resp,
+			ModelMap model) {
 		List<News> news = new ArrayList<>();
 		try {
 			news = newsService.getNews(cate, 50);
@@ -146,6 +160,7 @@ public class NewsController extends BaseController {
 		model.put("news", news);
 		return "news_in_one_cate";
 	}
+
 	private String homeOfNews(String cate, String target, ModelMap model) {
 		try {
 			if (target != null && !target.isEmpty()) {
@@ -155,22 +170,24 @@ public class NewsController extends BaseController {
 				JSONObject result = new JSONObject();
 				model.put("fromIndex", 10);
 				if (cate == null || cate.isEmpty()) {
-					cate = MappingHelper.TINTUC;
+					cate = NewsTypes.TINTUC;
 				}
-				if (MappingHelper.TINTUC.equals(cate) || NewsTypes.ENTERTAINMENT.equals(cate)|| NewsTypes.NHAC_FILMS.equals(cate)) {
+				if (NewsTypes.TINTUC.equals(cate) || NewsTypes.ENTERTAINMENT.equals(cate)
+						|| NewsTypes.NHAC_FILMS.equals(cate)) {
 					model.put("from", "dashboard");
 				}
 				model.put("cate", cate);
 				List<String> categories = MappingHelper.cateGroup.get(cate);
-				
+
 				if (categories != null && categories.size() > 0) {
 					List<String> queryCate = categories.subList(0, 1);
-					if (MappingHelper.TINTUC.equals(cate) || NewsTypes.ENTERTAINMENT.equals(cate)|| NewsTypes.NHAC_FILMS.equals(cate)) {
+					if (NewsTypes.TINTUC.equals(cate) || NewsTypes.ENTERTAINMENT.equals(cate)
+							|| NewsTypes.NHAC_FILMS.equals(cate)) {
 						result = newsService.getHighlightNews(cate, queryCate, 10, 0);
 					} else {
 						result = newsService.getNews(cate, queryCate, 10, 0);
 					}
-					
+
 					model.put("categories", result.get("categories"));
 					model.put("giavang", GoldCollector.giaVang);
 				}
@@ -184,22 +201,26 @@ public class NewsController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping(value = "/news/json/{cate}", method = RequestMethod.GET)
-	public void news(@PathVariable String cate, String target, HttpServletRequest req, HttpServletResponse resp, ModelMap model) {
+	public void news(@PathVariable String cate, String target, HttpServletRequest req, HttpServletResponse resp,
+			ModelMap model) {
 		try {
 			if (cate == null || cate.isEmpty()) {
-				cate = MappingHelper.TINTUC;
+				cate = NewsTypes.TINTUC;
 			}
 			List<String> categories = MappingHelper.cateGroup.get(cate);
 			JSONObject result = null;
-			if (categories != null && categories.size() >=2) {
+
+			if (categories != null && categories.size() >= 2) {
 				List<String> queryCate = categories.subList(1, categories.size());
-				if (MappingHelper.TINTUC.equals(cate) ||  NewsTypes.ENTERTAINMENT.equals(cate)|| NewsTypes.NHAC_FILMS.equals(cate))
+				if (NewsTypes.TINTUC.equals(cate) || NewsTypes.ENTERTAINMENT.equals(cate)
+						|| NewsTypes.NHAC_FILMS.equals(cate))
 					result = newsService.getHighlightNews(cate + "_more2", queryCate, 10, 0);
 				else {
 					result = newsService.getNews(cate + "_more2", queryCate, 10, 0);
 				}
 			}
-			if(result != null)
+
+			if (result != null)
 				writeSimpleJSONObjectResponse(resp, result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -231,12 +252,13 @@ public class NewsController extends BaseController {
 			e.printStackTrace();
 		}
 	}
-public static void main(String[] args) {
-	try {
-		Long.parseLong("d");
-	}catch(Exception ex){
-		ex.printStackTrace();
+
+	public static void main(String[] args) {
+		try {
+			Long.parseLong("d");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
 	}
-	
-}
 }

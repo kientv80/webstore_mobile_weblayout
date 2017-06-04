@@ -12,8 +12,8 @@ import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.xyz.hayhay.db.dummydata.MappingHelper;
 import com.xyz.hayhay.entirty.MenuItem;
+import com.xyz.hayhay.entirty.NewsTypes;
 import com.xyz.hayhay.service.article.NewsService;
 import com.xyz.hayhay.util.TargetingUtil;
 
@@ -23,27 +23,27 @@ public class BaseController {
 	
 	public static final List<MenuItem> vnnews = new ArrayList<>();
 	static {
-		vnnews.add(new MenuItem(MappingHelper.TINTUC,"/news/" + MappingHelper.TINTUC, "Tuyển tập các thông tin trong nước mới nhất", "Tin tức", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.KINHTE,"/news/" + MappingHelper.KINHTE, "Tuyển tập các thông tin kinh tế trong nước mới nhất", "Kinh tế", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.CONGNGHE,"/news/" + MappingHelper.CONGNGHE, "Tuyển tập các thông tin kinh tế trong nước mới nhất", "Công Nghệ", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.THETHAO,"/news/" + MappingHelper.THETHAO, "Tuyển tập thông tin thể thao mới nhất", "Thể Thao", "/images/icons/sport.png"));
-		vnnews.add(new MenuItem(MappingHelper.SUCKHOE,"/news/" + MappingHelper.SUCKHOE, "Tuyển tập các thông tin về sức khỏe, gia đình mới nhất", "Sức khỏe", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.NGOISAO,"/news/" + MappingHelper.NGOISAO, "Tuyển tập các thông tin về người nổi tiếng, ngôi sao", "Ngôi Sao", "/images/icons/star.png"));
-		vnnews.add(new MenuItem(MappingHelper.TINHYEU,"/news/" + MappingHelper.TINHYEU, "Tình yêu - Gia đình", "Tinh Yêu", "/images/icons/love.png"));
-		vnnews.add(new MenuItem(MappingHelper.NHAC,"/news/" + MappingHelper.NHAC, "Tập hợp các bài hát hay", "Nhạc", "/images/icons/guitar.png"));
-		vnnews.add(new MenuItem(MappingHelper.XE,"/news/" + MappingHelper.XE, "Xe", "Xe", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.VIECLAM,"/" + MappingHelper.VIECLAM, "Việc làm", "Việc làm", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.BATDONGSAN,"/news/" + MappingHelper.BATDONGSAN, "Nhà Đất", "Nhà Đất", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.KYNANGMEN,"/news/" + MappingHelper.KYNANGMEN, "Kỹ năng", "Kỹ năng", "/images/icons/newspaper.png"));
-		vnnews.add(new MenuItem(MappingHelper.TVPROGRAM,"/tienich/" + MappingHelper.TVPROGRAM, "360hay TV, tập hợp lịch phát sóng của các đài truyền hình VN như VTV, VTVC, HTV, Truyền hình Hà Nội vv", "TV", "/images/icons/tv.png"));
+		vnnews.add(new MenuItem(NewsTypes.TINTUC,"/news/" + NewsTypes.TINTUC, "Tuyển tập các thông tin trong nước mới nhất", "Tin tức", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.KINHTE,"/news/" + NewsTypes.KINHTE, "Tuyển tập các thông tin kinh tế trong nước mới nhất", "Kinh tế", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.CONGNGHE,"/news/" + NewsTypes.CONGNGHE, "Tuyển tập các thông tin kinh tế trong nước mới nhất", "Công Nghệ", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.THETHAO,"/news/" + NewsTypes.THETHAO, "Tuyển tập thông tin thể thao mới nhất", "Thể Thao", "/images/icons/sport.png"));
+		vnnews.add(new MenuItem(NewsTypes.SUCKHOE,"/news/" + NewsTypes.SUCKHOE, "Tuyển tập các thông tin về sức khỏe, gia đình mới nhất", "Sức khỏe", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.NGOISAO,"/news/" + NewsTypes.NGOISAO, "Tuyển tập các thông tin về người nổi tiếng, ngôi sao", "Ngôi Sao", "/images/icons/star.png"));
+		vnnews.add(new MenuItem(NewsTypes.TINHYEU,"/news/" + NewsTypes.TINHYEU, "Tình yêu - Gia đình", "Tinh Yêu", "/images/icons/love.png"));
+		vnnews.add(new MenuItem(NewsTypes.NHAC,"/news/" + NewsTypes.NHAC, "Tập hợp các bài hát hay", "Nhạc", "/images/icons/guitar.png"));
+		vnnews.add(new MenuItem(NewsTypes.XE,"/news/" + NewsTypes.XE, "Xe", "Xe", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.VIECLAM,"/" + NewsTypes.VIECLAM, "Việc làm", "Việc làm", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.BATDONGSAN,"/news/" + NewsTypes.BATDONGSAN, "Nhà Đất", "Nhà Đất", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.KYNANGMEN,"/news/" + NewsTypes.KYNANGMEN, "Kỹ năng", "Kỹ năng", "/images/icons/newspaper.png"));
+		vnnews.add(new MenuItem(NewsTypes.TVPROGRAM,"/tienich/" + NewsTypes.TVPROGRAM, "360hay TV, tập hợp lịch phát sóng của các đài truyền hình VN như VTV, VTVC, HTV, Truyền hình Hà Nội vv", "TV", "/images/icons/tv.png"));
 	}
 	public static final List<MenuItem> worldnews = new ArrayList<>();
 	static {
-		worldnews.add(new MenuItem(MappingHelper.WN_HOME,"/home.html", "Home", "Home", "/images/icons/home_menu_icon.png"));
-		worldnews.add(new MenuItem(MappingHelper.WN_HOME,"/news/" + MappingHelper.WN_HOME, "Hot news", "Hot news", "/images/icons/home_menu_icon.png"));
-		worldnews.add(new MenuItem(MappingHelper.WN_TECH,"/news/" + MappingHelper.WN_TECH, "Tech", "Tech", "/images/icons/khcn.png"));
-		worldnews.add(new MenuItem(MappingHelper.WN_SIENCE,"/news/" + MappingHelper.WN_SIENCE, "Sience", "Sience", "/images/icons/science.png"));
-		worldnews.add(new MenuItem(MappingHelper.WN_BIZ,"/news/" + MappingHelper.WN_BIZ, "Business", "Business", "/images/icons/kt.png"));
+		worldnews.add(new MenuItem(NewsTypes.WN_HOME,"/home.html", "Home", "Home", "/images/icons/home_menu_icon.png"));
+		worldnews.add(new MenuItem(NewsTypes.WN_HOME,"/news/" + NewsTypes.WN_HOME, "Hot news", "Hot news", "/images/icons/home_menu_icon.png"));
+		worldnews.add(new MenuItem(NewsTypes.WN_TECH,"/news/" + NewsTypes.WN_TECH, "Tech", "Tech", "/images/icons/khcn.png"));
+		worldnews.add(new MenuItem(NewsTypes.WN_SIENCE,"/news/" + NewsTypes.WN_SIENCE, "Sience", "Sience", "/images/icons/science.png"));
+		worldnews.add(new MenuItem(NewsTypes.WN_BIZ,"/news/" + NewsTypes.WN_BIZ, "Business", "Business", "/images/icons/kt.png"));
 	}
 	
 	enum WEBSITE_TYPE {VNNEWS,WORLDNEWS}

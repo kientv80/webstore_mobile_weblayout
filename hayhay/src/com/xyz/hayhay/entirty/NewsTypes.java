@@ -21,6 +21,7 @@ public class NewsTypes {
 	public static final String WN_BIZ = "WN_BIZ";
 	public static final String WN_HEALTH = "WN_HEALTH";
 	public static final String WN_POLITICS = "WN_POLITICS";
+	public static final String WORLDNEWS = "worldnews";
 	
 	public static final String HUONGTHIEN = "HUONGTHIEN";
 	public static final String SOFTSKILLS = "SOFTSKILLS";
@@ -191,4 +192,17 @@ public class NewsTypes {
 	public static final String NAUAN_MONPHAP = "monphap";
 	public static final String NAUAN_CACNUOC = "nauancacnuoc";
 	public static final String MEVABE = "mevabe";
+	
+	public static final String TVPROGRAM = "tvprogram";
+	public static final String KYNANGMEN = "kynangmen";
+	public static final String VIECLAM = "vieclam";
+	public static final String NHAC = "nhac";
+	public static final String SUCKHOE = "suckhoe";
+	public static final String THETHAO = "thethao";
+	public static final String CONGNGHE = "congnghe";
+	public static final String KINHTE = "kinhte";
+	public static final String TINTUC = "tintuc";
+	public static final String MOVIE = "movie";
+	public static final String FILM = "film";
+	public static final String WEBSTORE = "webstore";
 }
